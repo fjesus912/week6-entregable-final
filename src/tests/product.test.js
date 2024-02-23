@@ -54,7 +54,6 @@ test("GET -> 'URL_BASE', should return status code 200, res.body to be defined a
   expect(res.body[0].category.id).toBe(category.id);
 });
 
-////
 test("GET -> 'URL_BASE', should return status code 200, res.body to be defined and res.body.length === 1, res.body[0].categoryId === category.id and res.body[0].category.id === category.id", async () => {
   const res = await request(app).get(`${URL_BASE}?category=${category.id}`);
 
@@ -68,8 +67,6 @@ test("GET -> 'URL_BASE', should return status code 200, res.body to be defined a
   expect(res.body[0].category).toBeDefined();
   expect(res.body[0].category.id).toBe(category.id);
 });
-////
-
 
 test("GET -> 'URL_BASE/:id', should return status code 200, res.body to be defined, res.body.title === product.title, res.body.category.id to be defined and res.body.category.id === category.id", async () => { 
   const res = await request(app)
