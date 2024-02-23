@@ -3,6 +3,7 @@ const app = require("../app");
 
 const URL_BASE = "/categories";
 const URL_BASE_USERS = "/users";
+
 const category = {
   name: "electronica",
 };
@@ -15,7 +16,9 @@ beforeAll(async () => {
     email: "fernando@gmail.com",
     password: "fernando1234",
   };
-  const res = await request(app).post(`${URL_BASE_USERS}/login`).send(user);
+  const res = await request(app)
+    .post(`${URL_BASE_USERS}/login`)
+    .send(user);
 
   TOKEN = res.body.token;
 });
@@ -34,7 +37,8 @@ test("POST -> 'URBL_BASE', should return status code 201, res.body to be defined
 });
 
 test("GET -> 'URL_BASE/categories', should return status code 200, res.body to be defined and res.body to have length === 1 ", async () => {
-  const res = await request(app).get(URL_BASE);
+  const res = await request(app)
+    .get(URL_BASE);
 
   expect(res.status).toBe(200);
   expect(res.body).toBeDefined();
