@@ -42,17 +42,15 @@ const login = catchError(async (req, res) => {
   if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
   //password
-  const isValid = await bcrypt.compare(password, user.password)
+  const isValid = await bcrypt.compare(password, user.password);
   if (!isValid) return res.status(401).json({ error: "Invalid credentials" });
 
   //generación del token
-  const token = jwt.sign(
-    {user},
-    process.env.TOKEN_SECRET,
-    {expiresIn: '1d'}
-  )
+  const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
 
-  return res.json({user, token})
+  return res.json({ user, token });
 });
 
 module.exports = {
@@ -60,5 +58,5 @@ module.exports = {
   create,
   remove,
   update,
-  login
+  login,
 };
