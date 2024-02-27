@@ -3,6 +3,7 @@ const {
   create,
   remove,
   update,
+  getOne,
 } = require("../controllers/cart.controllers");
 const express = require("express");
 
@@ -12,6 +13,9 @@ routerCart.route("/")
   .get(getAll)
   .post(create);
 
-routerCart.route("/:id").delete(remove).put(update);
+routerCart.route("/:id")
+  .get(getOne)
+  .delete(remove)
+  .put(update);
 
 module.exports = routerCart;
