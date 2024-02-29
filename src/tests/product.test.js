@@ -15,7 +15,9 @@ beforeAll(async () => {
     email: "fernando@gmail.com",
     password: "fernando1234",
   };
-  const res = await request(app).post(URL_BASE_USER).send(user);
+  const res = await request(app)
+    .post(URL_BASE_USER)
+    .send(user);
 
   TOKEN = res.body.token;
 
